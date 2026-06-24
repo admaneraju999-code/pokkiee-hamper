@@ -167,9 +167,19 @@
 <div class="flex items-center gap-4">
 <button class="material-symbols-outlined p-2 text-primary hover:bg-primary-container rounded-full transition-colors">favorite</button>
 <button class="material-symbols-outlined p-2 text-primary hover:bg-primary-container rounded-full transition-colors">shopping_bag</button>
+<button id="mobileMenuToggle" class="md:hidden p-2 text-primary" aria-label="Open mobile menu">
+<span class="material-symbols-outlined">menu</span>
+</button>
 <div class="w-8 h-8 rounded-full bg-primary-container overflow-hidden">
 <img class="w-full h-full object-cover" data-alt="A portrait of a smiling user for an e-commerce profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMZZ6Akn4P_Y1eE4Hfjo975UctAUTXZF6cQ_Qig6THBX7jTIC8Ty5lw53ulyO9ZtVVSnwJCzpv4EOW8WlVoZvupxg7GV1IV6DO6CDicBgtrqML3j7mCjcSClwG8PqXGYamdKjhX3t4kouMqbLWgfQmP_gJ6Ai5oucam_Jkrxln-ga4_CJILMA6nGK15MPe1HDvHx9UE8Uno4nbXzS4ycWRGza_zqzpmK-a96ToqSPIs_XLpzebWnczEo6q5YOuRuI92UYJCrCOAW6E">
 </div>
+</div>
+</div>
+<div id="mobileMenu" class="md:hidden hidden px-container-padding pb-4 bg-surface/95 dark:bg-surface-dim/95 backdrop-blur-md border-t border-primary-fixed-dim/20">
+<div class="space-y-3">
+<a class="block font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="index.html">Shop</a>
+<a class="block font-label-md text-label-md text-primary border-b-2 border-primary dark:border-primary-fixed-dim pb-1" href="gift.html">Gift Guide</a>
+<a class="block font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="about.html">About</a>
 </div>
 </div>
 </nav>
@@ -668,7 +678,12 @@
                     <span>Base: ${selections.base.name}</span>
                 </li>
                 <li class="flex items-center ${selections.top.price > 0 ? 'text-primary font-bold' : 'text-on-surface-variant italic'}">
-                    <span>Top: ${selections.top.name}</span>
+                    <span>Top: ${selections.top.name}</span>                    cd "c:\Users\Harsh\Desktop\Tanvi project"
+                    git init
+                    git add .
+                    git commit -m "Initial commit"
+                    git remote add origin https://github.com/your-username/your-repo.git
+                    git push -u origin main
                 </li>
                 <li class="flex items-center ${selections.sweet.price > 0 ? 'text-primary font-bold' : 'text-on-surface-variant italic'}">
                     <span>Sweet: ${selections.sweet.name}</span>
@@ -715,6 +730,19 @@
         }
 
         updateSummary();
+    </script>
+<script>
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenuToggle && mobileMenu) {
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuToggle.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.textContent = mobileMenu.classList.contains('hidden') ? 'menu' : 'close';
+                }
+            });
+        }
     </script>
 
 
