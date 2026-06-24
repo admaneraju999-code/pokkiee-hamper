@@ -145,8 +145,17 @@
 <div class="flex items-center gap-4">
 <button class="material-symbols-outlined text-primary text-2xl hover:scale-110 transition-transform">favorite</button>
 <button class="material-symbols-outlined text-primary text-2xl hover:scale-110 transition-transform">shopping_bag</button>
+<button id="mobileMenuToggle" class="md:hidden p-2 text-primary" aria-label="Open mobile menu">
+<span class="material-symbols-outlined">menu</span>
+</button>
 </div>
 </nav>
+<div id="mobileMenu" class="md:hidden hidden px-container-padding pb-4 bg-surface/95 backdrop-blur-md border-t border-primary-fixed-dim/20">
+<div class="space-y-3">
+<a class="block font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="index.html">Shop</a>
+<a class="block font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="about.html">About</a>
+</div>
+</div>
 <!-- Main Content Canvas -->
 <main class="mt-32 px-container-padding max-w-5xl mx-auto pb-section-gap-desktop">
 <!-- Header Section -->
@@ -323,6 +332,20 @@
                 section.style.transition = 'all 0.3s ease';
             });
         });
+    </script>
+
+<script>
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenuToggle && mobileMenu) {
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuToggle.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.textContent = mobileMenu.classList.contains('hidden') ? 'menu' : 'close';
+                }
+            });
+        }
     </script>
 
 
