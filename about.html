@@ -1,0 +1,333 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Our Pookie Story | Pookie Hampers</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Outfit:wght@300;400;500&amp;family=Quicksand:wght@500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&amp;family=Plus+Jakarta+Sans:wght@100..900&amp;family=Quicksand:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pookie-shadow {
+            box-shadow: 0 12px 32px -4px rgba(129, 81, 91, 0.1);
+        }
+        .pookie-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -8px rgba(129, 81, 91, 0.15);
+        }
+        .bow-shape {
+            clip-path: polygon(0% 20%, 20% 0%, 50% 20%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 50% 80%, 20% 100%, 0% 80%);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        .heart-pop:active {
+            transform: scale(1.2);
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#c5c5d8",
+                        "primary": "#81515b",
+                        "surface-container-low": "#fff0f4",
+                        "surface-container-high": "#f9e3ea",
+                        "secondary": "#5c5d6e",
+                        "on-tertiary-fixed": "#1d1b16",
+                        "tertiary-fixed-dim": "#cbc6bd",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#5c5952",
+                        "on-secondary-fixed": "#191b29",
+                        "primary-fixed": "#ffd9df",
+                        "on-primary-container": "#7b4c56",
+                        "surface-tint": "#81515b",
+                        "on-surface": "#24181d",
+                        "inverse-primary": "#f3b7c1",
+                        "on-primary-fixed-variant": "#663a43",
+                        "primary-fixed-dim": "#f3b7c1",
+                        "on-tertiary-fixed-variant": "#494640",
+                        "inverse-on-surface": "#ffecf2",
+                        "on-secondary-fixed-variant": "#444655",
+                        "surface": "#fff8f8",
+                        "secondary-container": "#e1e1f5",
+                        "on-background": "#24181d",
+                        "tertiary-fixed": "#e7e2d9",
+                        "on-primary-fixed": "#331019",
+                        "on-error": "#ffffff",
+                        "tertiary": "#615e57",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#fee8ef",
+                        "on-surface-variant": "#514345",
+                        "secondary-fixed": "#e1e1f5",
+                        "inverse-surface": "#3a2d32",
+                        "surface-variant": "#f3dde4",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#ffc1cc",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#d5d0c8",
+                        "surface-bright": "#fff8f8",
+                        "surface-dim": "#ead5dc",
+                        "error-container": "#ffdad6",
+                        "outline": "#837375",
+                        "background": "#fff8f8",
+                        "outline-variant": "#d5c2c4",
+                        "on-secondary-container": "#626374"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap-mobile": "64px",
+                        "section-gap-desktop": "120px",
+                        "base": "8px",
+                        "element-gap": "16px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Outfit"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Quicksand"],
+                        "body-lg": ["Outfit"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "display-lg": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<nav class="fixed w-full top-0 z-50 backdrop-blur-md bg-surface/80 shadow-sm shadow-primary/5">
+<div class="flex justify-between items-center px-container-padding py-base max-w-7xl mx-auto">
+<a class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight hover:scale-105 transition-transform duration-300" href="index.html">Pookie Hampers</a>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-on-surface-variant font-body-lg hover:text-primary transition-colors" href="index.html#shop">Shop</a>
+<a class="text-primary font-bold border-b-2 border-primary-fixed-dim pb-1" href="about.html">About</a>
+<a class="text-on-surface-variant font-body-lg hover:text-primary transition-colors" href="gift.html">Gift Guides</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-primary hover:scale-105 transition-all">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="mt-20">
+<!-- Hero Section: Our Pookie Story -->
+<section class="relative min-h-[70vh] flex items-center justify-center text-center px-container-padding py-section-gap-mobile md:py-section-gap-desktop overflow-hidden">
+<div class="absolute inset-0 z-0">
+
+</div>
+<div class="relative z-10 max-w-3xl mx-auto space-y-6">
+<div class="inline-flex items-center gap-2 bg-primary-container/40 text-on-primary-container px-6 py-2 rounded-full border border-primary-fixed-dim backdrop-blur-sm animate-float">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: &quot;FILL&quot; 1;">favorite</span>
+<span class="font-label-md text-label-md">MADE WITH LOVE</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: &quot;FILL&quot; 1;">favorite</span>
+</div>
+<h1 class="font-display-lg text-4xl md:text-display-lg text-primary">Our Pookie Story</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                    Once upon a time, we realized that the world needed a little more pink, a few more bows, and a whole lot more heart. Pookie Hampers was born from a dream to curate moments that feel like a warm hug and look like a soft dream.
+                </p>
+<div class="flex flex-wrap justify-center gap-4 pt-4">
+<a href="index.html#shop" class="inline-block px-10 py-4 bg-primary text-on-primary rounded-full font-bold pookie-shadow pookie-hover transition-all duration-300">
+                        Explore Shop
+                    </a>
+</div>
+</div>
+</section>
+<!-- The Mission: Soft Focused Imagery -->
+<section class="px-container-padding py-section-gap-mobile md:py-section-gap-desktop max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div class="relative">
+<div class="aspect-square rounded-xl overflow-hidden pookie-shadow rotate-2">
+<img class="w-full h-full object-cover" data-alt="A soft-focused, high-aesthetic close-up of a premium gift hamper filled with silk ribbons, lace textures, and artisanal treats. The lighting is dreamy and golden, emphasizing pastel pink and cream tones. Soft bows are tied around delicate glass jars, reflecting a coquette aesthetic of elegance and warmth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE8jHiizkZEpSn2d8JZXjU1CBQ9Bi7aqhldqgUbwWL3GkkdzwIkjsgaQ_q0en_EaZnQ5UGBPt7oGdoW1lb1-wzkuAa9nEbPUfOkUu8nNVcjW6J1jdiRE_N3f_AALB8Xrz1loTjM40s8CTtm4L4M5cpyHUeMCkXTL2hVn4CvEwAE_Cauh_XMVWjqesp6MPL8AqJsW0C3SduKl0AjsdRdnktafVxYaEY4WeWG7l-X4A36a6IssqBgUL4aMpXGNWV6-8gBpGDg4gNDFTE7m8">
+</div>
+<div class="absolute -bottom-8 -left-8 w-48 h-48 rounded-lg overflow-hidden border-8 border-surface pookie-shadow -rotate-6 hidden md:block">
+<img class="w-full h-full object-cover" data-alt="A macro shot of soft pink satin bows and delicate white lace resting on a cream-colored textured paper background. The atmosphere is whimsical and sophisticated, perfectly aligned with a feminine pookie-culture branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE2jiahvqFtHcQlU0fNALU5LIt9mhVJV7I-P1j4dUsbt5d3vq8F_35DAexW6O4UMVV8SN7IdtLjzQ4wQGuN_Ip6S67FcXg11x_fJw30owGGpws6643G9Vj3YAa3uOFOahCrjwBqjmEYfj6HelreqU59JQg5Kc941Lqv60SecoPUKFhDoOC7yzqq2BZzAh-6OEAPm2rw-ukAjpuMvJUpr2SPUYeY2O4wJHdHWl08NNkxM7MPwXDf4SnLMf2nVGWF7AvLr3Rv12PHQ06">
+</div>
+<!-- Decorative Bow SVG Placeholder -->
+<div class="absolute -top-10 -right-10 w-24 h-24 text-primary/20 animate-pulse">
+<span class="material-symbols-outlined text-8xl" style="font-variation-settings: &quot;FILL&quot; 1;">card_giftcard</span>
+</div>
+</div>
+<div class="space-y-8">
+<h2 class="font-headline-lg text-headline-lg text-primary">The Pookie-fication Mission</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        We believe that gifting is an art form. It's not just about what's inside the box; it's about the feeling you get when you see those perfectly tied ribbons and smell the scent of vanilla and rose. 
+                    </p>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        Our mission is to 'Pookie-fy' every gift—infusing it with charm, thoughtfulness, and that unmistakable coquette aesthetic that turns a simple present einto a cherished memory.
+                    </p>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-6 bg-surface-container-low rounded-lg border border-primary-fixed-dim/30">
+<span class="text-3xl font-bold text-primary">100%</span>
+<p class="text-label-md font-label-md text-on-surface-variant">Hand-Wrapped</p>
+</div>
+<div class="p-6 bg-surface-container-low rounded-lg border border-primary-fixed-dim/30">
+<span class="text-3xl font-bold text-primary">∞</span>
+<p class="text-label-md font-label-md text-on-surface-variant">Cuteness Levels</p>
+</div>
+</div>
+</div>
+</div>
+</section><div class="max-w-7xl mx-auto px-container-padding mb-20 flex justify-center">
+  <a href="https://wa.me/918779542727" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-4 px-12 py-5 bg-[#25D366] text-white rounded-full font-bold pookie-shadow pookie-hover transition-all duration-300 hover:scale-105">
+    <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+    </svg>
+    <span class="text-body-lg font-bold">Contact us to buy</span>
+  </a>
+</div>
+<!-- Behind the Bow: Founders/Fairies -->
+<section class="bg-surface-container py-section-gap-mobile md:py-section-gap-desktop">
+<div class="max-w-7xl mx-auto px-container-padding text-center space-y-12">
+<div class="space-y-4">
+<h2 class="font-headline-lg text-headline-lg text-primary">Behind the Bow</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Meet the Hamper Fairies who sprinkle a little bit of magic on every order before it leaves our dreamy studio.</p>
+</div>
+<div class="flex justify-center">
+<div class="group">
+<div class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white pookie-shadow group-hover:scale-105 transition-transform duration-500">
+<img class="w-full h-full object-cover" data-alt="A portrait of a friendly creative professional with soft lighting. She is holding a bouquet of dried flowers and wearing a floral apron. The background is a pastel-colored workshop filled with beautiful gift boxes and aesthetic packaging materials." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMMTi3QdJWnetGLImJzC402HxZ5E4KFTZRh7xatxQxENF-n9ON-USPUQcnVt7fSeVBRwwlE1jsxDxp-8sO1iMzFyaS9zptMhroIkGPFF9GJOPwmPmEvkloiJ9xhUz4q-Su8l7sVsV9NwvIycBtDAqUaVmzoeQ9mDuI0-XWp-33_g7QsqwLAOBpeED7RZcR7MziQkQ1ubJdRqs_w4B7BB4GTaPGQ4XKZzZqoXo0z9tPegcfUQ2GTvdj2aCnQvpHmYCyDadAgO-BAeZZREI">
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Tanvi&nbsp;</h3>
+<p class="font-label-md text-label-md text-on-primary-fixed-variant uppercase tracking-widest">Curation Queen</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Values Section -->
+<section class="px-container-padding py-section-gap-mobile md:py-section-gap-desktop max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Value 1 -->
+<div class="text-center space-y-4 p-8 rounded-lg bg-surface-container-low pookie-hover transition-all">
+<div class="w-16 h-16 bg-primary-container text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-3xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Hand-Picked</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Every treat and trinket is selected for its high-aesthetic quality and pookie potential.</p>
+</div>
+<!-- Value 2 -->
+<div class="text-center space-y-4 p-8 rounded-lg bg-surface-container-low pookie-hover transition-all">
+<div class="w-16 h-16 bg-primary-container text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-3xl" data-icon="favorite" style="font-variation-settings: &quot;FILL&quot; 1;">favorite</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Wrapped with Love</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">We spend hours perfecting every bow to ensure a 'wow' moment the second it arrives.</p>
+</div>
+<!-- Value 3 -->
+<div class="text-center space-y-4 p-8 rounded-lg bg-surface-container-low pookie-hover transition-all">
+<div class="w-16 h-16 bg-primary-container text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-3xl" data-icon="stars" style="font-variation-settings: &quot;FILL&quot; 1;">stars</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Pookie-Approved</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">If it's not absolutely adorable and heart-melting, it doesn't make it into our boxes.</p>
+</div>
+</div>
+</section>
+<!-- Final CTA: Join the Pookie Fam -->
+<section class="px-container-padding py-section-gap-mobile md:py-section-gap-desktop max-w-5xl mx-auto mb-20">
+<div class="bg-primary-container/30 rounded-xl p-12 text-center space-y-8 relative overflow-hidden">
+<!-- Floating Accents -->
+<div class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+<h2 class="font-headline-lg text-headline-lg text-primary relative z-10">Join the Pookie Fam</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto relative z-10">
+                    Get exclusive first looks at our seasonal drops, pookie styling tips, and a 10% discount on your first hamper.
+                </p>
+<form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto relative z-10" onsubmit="event.preventDefault(); alert('Yay! You are now part of the Pookie Fam! 🎀');">
+<input class="flex-1 px-8 py-4 bg-surface rounded-full border-2 border-primary-fixed-dim focus:border-primary focus:ring-0 transition-colors text-primary font-body-md outline-none" placeholder="Your pookie email address..." required="" type="email">
+<button class="px-10 py-4 bg-primary text-on-primary rounded-full font-bold pookie-shadow pookie-hover transition-all" type="submit">
+                        Sign Up
+                    </button>
+</form>
+<div class="flex justify-center gap-6 pt-4 text-primary">
+<a class="hover:scale-110 transition-transform" href="https://www.instagram.com/pookiehampers" target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined" data-icon="heart_plus" style="font-variation-settings: &quot;FILL&quot; 1;">heart_plus</span></a>
+<a class="hover:scale-110 transition-transform" href="https://www.instagram.com/pookiehampers" target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined" data-icon="photo_camera">photo_camera</span></a>
+<a class="hover:scale-110 transition-transform" href="https://www.instagram.com/pookiehampers" target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined" data-icon="star">star</span></a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-lg bg-surface-container-low">
+<div class="flex flex-col md:flex-row justify-between items-center gap-base px-container-padding py-section-gap-mobile md:py-section-gap-desktop max-w-7xl mx-auto">
+<div class="space-y-4 text-center md:text-left">
+<h3 class="font-headline-md text-headline-md text-on-primary-fixed-variant">Pookie Hampers</h3>
+<p class="text-on-surface-variant font-body-md">© 2024 Pookie Hampers. Made with love and bows.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors" href="policy.html">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors" href="index.html#shipping">Shipping Info</a>
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors" href="index.html#contact">Contact Us</a>
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors" href="index.html#faq">FAQ</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions and effects
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.style.transform = 'scale(0.95)';
+            });
+            el.addEventListener('mouseup', () => {
+                el.style.transform = '';
+            });
+        });
+
+        // Add small sparkles to the background occasionally
+        function createSparkle() {
+            const sparkle = document.createElement('span');
+            sparkle.className = 'material-symbols-outlined absolute text-primary/20 pointer-events-none z-0';
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            sparkle.innerText = 'sparkles';
+            sparkle.style.animation = 'pulse 2s infinite';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 3000);
+        }
+
+        setInterval(createSparkle, 2000);
+    </script>
+
+
+<a href="https://wa.me/918779542727" target="_blank" rel="noopener noreferrer" class="fixed bottom-8 right-8 z-50 w-16 h-16 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center pookie-shadow pookie-hover transition-all duration-300 hover:scale-110" aria-label="Chat on WhatsApp">
+  <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+  </svg>
+</a><span class="material-symbols-outlined absolute text-primary/20 pointer-events-none z-0" style="left: 44.3609vw; top: 5.71647vh; font-size: 14.4933px; animation-duration: 2s; animation-timing-function: ease; animation-iteration-count: infinite; animation-direction: normal; animation-fill-mode: none; animation-play-state: running; animation-name: pulse; animation-timeline: auto; animation-range: normal;">sparkles</span><span class="material-symbols-outlined absolute text-primary/20 pointer-events-none z-0" style="left: 18.6916vw; top: 68.2482vh; font-size: 24.3075px; animation-duration: 2s; animation-timing-function: ease; animation-iteration-count: infinite; animation-direction: normal; animation-fill-mode: none; animation-play-state: running; animation-name: pulse; animation-timeline: auto; animation-range: normal;">sparkles</span>
+
+<span class="material-symbols-outlined absolute text-primary/20 pointer-events-none z-0" style="left: 23.4115vw; top: 29.7785vh; font-size: 21.5367px; animation-duration: 2s; animation-timing-function: ease; animation-iteration-count: infinite; animation-direction: normal; animation-fill-mode: none; animation-play-state: running; animation-name: pulse; animation-timeline: auto; animation-range: normal;">sparkles</span><span class="material-symbols-outlined absolute text-primary/20 pointer-events-none z-0" style="left: 11.6504vw; top: 52.695vh; font-size: 18.3829px; animation-duration: 2s; animation-timing-function: ease; animation-iteration-count: infinite; animation-direction: normal; animation-fill-mode: none; animation-play-state: running; animation-name: pulse; animation-timeline: auto; animation-range: normal;">sparkles</span>
+
+<span class="material-symbols-outlined absolute text-primary/20 pointer-events-none z-0" style="left: 59.7015vw; top: 48.1745vh; font-size: 14.0471px; animation: 2s ease 0s infinite normal none running pulse;">sparkles</span><span class="material-symbols-outlined absolute text-primary/20 pointer-events-none z-0" style="left: 9.75666vw; top: 90.8042vh; font-size: 25.5183px; animation: 2s ease 0s infinite normal none running pulse;">sparkles</span></body></html>

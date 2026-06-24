@@ -1,0 +1,46 @@
+{
+  "site": {
+    "name": "Pookie Hampers",
+    "description": "The cutest gifts for your favorite pookies",
+    "url": "https://pookiehampers.com",
+    "logo": "src/images/logo.svg",
+    "favicon": "src/images/favicon.ico",
+    "contact": {
+      "email": "support@pookiehampers.com",
+      "phone": "+91-8779542727",
+      "whatsapp": "+918779542727",
+      "address": "Coming Soon - India"
+    }
+  },
+  "colors": {
+    "primary": "#81515b",
+    "secondary": "#5c5d6e",
+    "accent": "#ffc1cc",
+    "background": "#fff8f8",
+    "surface": "#fff8f8"
+  },
+  "payment": {
+    "methods": ["razorpay", "stripe", "upi", "cod"],
+    "currency": "INR",
+    "taxRate": 0.18
+  },
+  "shipping": {
+    "standard": {
+      "days": "3-5",
+      "cost": 0,
+      "minOrderValue": 100
+    },
+    "express": {
+      "days": "1",
+      "cost": 500,
+      "minOrderValue": 0
+    }
+  },
+  "features": {
+    "customizer": true,
+    "wishlist": true,
+    "reviews": true,
+    "livestream": false,
+    "subscriptionBoxes": false
+  }
+}

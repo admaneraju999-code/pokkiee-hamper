@@ -1,0 +1,729 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Gift Guide | Pookie Hampers</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Outfit:wght@400;600&amp;family=Quicksand:wght@500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&amp;family=Plus+Jakarta+Sans:wght@100..900&amp;family=Quicksand:wght@100..900&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#f3dde4",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#663a43",
+                        "on-secondary-container": "#626374",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1d1b16",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#e1e1f5",
+                        "primary": "#81515b",
+                        "surface": "#fff8f8",
+                        "surface-container": "#fee8ef",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#d5d0c8",
+                        "surface-tint": "#81515b",
+                        "inverse-surface": "#3a2d32",
+                        "surface-variant": "#f3dde4",
+                        "tertiary-fixed-dim": "#cbc6bd",
+                        "on-surface-variant": "#514345",
+                        "on-surface": "#24181d",
+                        "on-background": "#24181d",
+                        "secondary-container": "#e1e1f5",
+                        "background": "#fff8f8",
+                        "on-primary-fixed": "#331019",
+                        "secondary": "#5c5d6e",
+                        "on-secondary-fixed-variant": "#444655",
+                        "outline": "#837375",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#f3b7c1",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#c5c5d8",
+                        "primary-container": "#ffc1cc",
+                        "on-tertiary-fixed-variant": "#494640",
+                        "surface-container-low": "#fff0f4",
+                        "surface-dim": "#ead5dc",
+                        "tertiary-fixed": "#e7e2d9",
+                        "outline-variant": "#d5c2c4",
+                        "on-secondary-fixed": "#191b29",
+                        "inverse-on-surface": "#ffecf2",
+                        "surface-container-high": "#f9e3ea",
+                        "tertiary": "#615e57",
+                        "primary-fixed-dim": "#f3b7c1",
+                        "on-primary-container": "#7b4c56",
+                        "primary-fixed": "#ffd9df",
+                        "surface-bright": "#fff8f8",
+                        "on-tertiary-container": "#5c5952",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap-mobile": "64px",
+                        "base": "8px",
+                        "element-gap": "16px",
+                        "section-gap-desktop": "120px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Quicksand"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Outfit"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Outfit"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #fff8f8;
+            color: #24181d;
+            scroll-behavior: smooth;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hamper-option-selected {
+            @apply border-primary ring-4 ring-primary-container/50 bg-primary-container/10;
+        }
+        .glass-card {
+            background: rgba(255, 248, 248, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        .pop-on-click {
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .pop-on-click:active {
+            transform: scale(0.95);
+        }
+        .hamper-option-card {
+            max-width: 340px;
+            margin-inline: auto;
+            overflow: hidden;
+            border-radius: 2rem;
+            box-shadow: 0 18px 50px rgba(129, 81, 91, 0.12);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        .hamper-option-card:hover {
+            box-shadow: 0 24px 70px rgba(129, 81, 91, 0.18);
+        }
+        .hamper-option-card > div.aspect-square {
+            max-height: 240px;
+            aspect-ratio: 1 / 1;
+        }
+        .hamper-option-card > div.aspect-square img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .section-ribbon::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #81515b, transparent);
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-[0_4px_12px_rgba(129,81,91,0.1)]">
+<div class="flex justify-between items-center px-container-padding py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<a class="font-display-lg text-headline-md text-primary dark:text-primary-fixed-dim" href="index.html">Pookie Hampers</a>
+<div class="hidden md:flex items-center gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:scale-105 transition-transform duration-300 hover:text-primary" href="index.html">Shop</a>
+<a class="font-label-md text-label-md text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1" href="gift.html">Gift Guide</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:scale-105 transition-transform duration-300 hover:text-primary" href="about.html">About</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined p-2 text-primary hover:bg-primary-container rounded-full transition-colors">favorite</button>
+<button class="material-symbols-outlined p-2 text-primary hover:bg-primary-container rounded-full transition-colors">shopping_bag</button>
+<div class="w-8 h-8 rounded-full bg-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a smiling user for an e-commerce profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMZZ6Akn4P_Y1eE4Hfjo975UctAUTXZF6cQ_Qig6THBX7jTIC8Ty5lw53ulyO9ZtVVSnwJCzpv4EOW8WlVoZvupxg7GV1IV6DO6CDicBgtrqML3j7mCjcSClwG8PqXGYamdKjhX3t4kouMqbLWgfQmP_gJ6Ai5oucam_Jkrxln-ga4_CJILMA6nGK15MPe1HDvHx9UE8Uno4nbXzS4ycWRGza_zqzpmK-a96ToqSPIs_XLpzebWnczEo6q5YOuRuI92UYJCrCOAW6E">
+</div>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="pt-32 pb-16 px-container-padding max-w-7xl mx-auto text-center relative overflow-hidden">
+<div class="absolute -top-10 -left-10 w-40 h-40 bg-primary-container/30 rounded-full blur-3xl"></div>
+<div class="absolute top-20 -right-20 w-60 h-60 bg-surface-container-highest/50 rounded-full blur-3xl"></div>
+<h1 class="font-display-lg text-headline-lg md:text-display-lg text-primary mb-6">Create Your Perfect Pookie Hamper</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+            Every "pookie" deserves a little extra magic. Scroll through and pick your favorite elements to build a thoughtful gift from the ground up.
+        </p>
+<div class="mt-8 flex justify-center gap-4">
+<span class="inline-flex items-center gap-2 px-6 py-2 bg-white rounded-full text-primary border-2 border-primary-container font-label-md shadow-sm">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: &quot;FILL&quot; 1;">favorite</span>
+                Thoughtfully Handcrafted
+            </span>
+<span class="inline-flex items-center gap-2 px-6 py-2 bg-white rounded-full text-primary border-2 border-primary-container font-label-md shadow-sm">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: &quot;FILL&quot; 1;">auto_awesome</span>
+                Sparkly Finishes
+            </span>
+</div>
+</header>
+<!-- Builder Section (One Page Layout) -->
+<section class="max-w-7xl mx-auto px-container-padding mb-section-gap-desktop">
+<div class="flex flex-col lg:flex-row gap-12 items-start">
+<!-- Scrollable Selection Area -->
+<div class="flex-1 space-y-20" id="builder-content">
+<!-- Step 1: The Base -->
+<section class="space-y-8" id="category-base">
+<div class="relative inline-block section-ribbon">
+<div class="flex items-center gap-4 mb-2">
+<span class="material-symbols-outlined text-primary text-4xl">inventory_2</span>
+<h2 class="font-headline-md text-headline-md text-primary">Choose Your Base</h2>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6">
+
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group" onclick="selectItem('base', 'Heart-Shaped Box', 30, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Heart-shaped box" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0m7RxY5Y43F1eiIH24bG-J7JijFwxK3PUidhIGeP4WtPwkDh4Wd9zluRzUiL2pqdORvDQNkXys8_nyXlwGZ84d-Hs7JX-jgK_Cplf9NhrFdk9FfEX7HDgIhzdSwaULgLcO1b3wpdap2XIkPeGEmEXWLcUEz3pdWp7kVlN91wxmTVwWWd80vQ-YDHKc-zzErZyyi09vG1j1HHgJ2UKrAK1paA2Ijy0aXFgnjJ6MDKDX2QivTNp1Mplo8DMdZAoOFht-zz_ECRU5Jzi">
+</div>
+<span class="font-bold text-primary mb-1">Heart-Shaped Box</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group" onclick="selectItem('base', 'Velvet Keepsake Trunk', 45, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Velvet keepsake trunk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRi5T2QHrShUsjfnw_Y4AjAAEYUu_rZElYdmcYg1fPGTNu2ELPrFLc1nBsh_BbIxHLrfgXtsT1xf8JQ6bu0jdv3a62rBqZHaq-a8iBN4l9ikzUvplbNCYzuJdiVh5tNWKUGHgDoQCyGV_CAlUSZ1znXe2XeKFpCVsZYqGiLIF0FGXQ8Rlo8Rj6_YoBNQhuCs0MPq8O63_s7sNXTyTmu1ZgXIQ0d655RKrxZz9UfekYehxWR1FoaZh5pFcim1jOHPFYU6WAKhPUxvhpdNI">
+</div>
+<span class="font-bold text-primary mb-1">Velvet Keepsake Trunk</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group hamper-option-selected" onclick="selectItem('base', 'Bouquet Wrap', 35, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Pastel Blue Hat Box" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC890qPCcF95f0tlO6_MI-zTim0BuPkr_xyKhXp95WMvfhd-I6GHd13JUuZpTz-mh0ST1BdnqLsnOnMwa5K2GP__sFUABltDDjgw3MCxzB0zx3zjEuKqqHuGzwS38Zl415ZD7mbZ_ZD7Gnjl9LHObxiXpEHDUBw5enrBAMWFd8y_fB_Q66pErXqC1_Ak-RZkQn7BYya5QAFg_Oj6iwC7mC81Ifmwuy0BEnKpkowL08HHFZE0mq67-hQuLwtCuyEES6qu5hODAIj2DFH0_A">
+</div>
+<span class="font-bold text-primary mb-1">bouquet wrap</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+</div>
+</section><section class="space-y-8" id="category-top">
+<div class="relative inline-block section-ribbon">
+<div class="flex items-center gap-4 mb-2">
+<span class="material-symbols-outlined text-primary text-4xl">layers</span>
+<h2 class="font-headline-md text-headline-md text-primary">Choose Your Top</h2>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6">
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group" onclick="selectItem('top', 'Kurtii', 12, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Kurtii" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrI19SfWlPGhr6IQGqgxikkHOKxKtvSis_iP5lbukYYrugg1dIBUHPEh6lha6s3OdZv04p-t87fdFtoBk_2TevBlr0iZNoSjhKCaPBXMmPOguLPIqFSHcrzDbj1wllUlTAofbqXJwigBf9C65loqURVHVUYDNti1dVpJx3PGJgiP7a82inkjtcHBbWgLckqwHoiCvEwEkI5xFbD7GKxGFqKPOdQ3gztEfN6LCE9irtUZ_iDIMgWp-kn4ncniFSwq-mBt-Njssn-iV3Bkk">
+</div>
+<span class="font-bold text-primary mb-1">Kurtii</span>
+<span class="text-on-surface-variant"><br></span>
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group" onclick="selectItem('top', 'T-shirt', 15, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="T-shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ0b2u1_KgwarDE93y99-JscPg7W0bbdbeK1dELBoprXkFxGxt3PPk1EZ_Y2bAuf6_URWFX1AihjoUfnLSIN-zS6zb-3rzUC_gKk4y-6fOI1x9bedpOdr8GA-WCAJR11uw2Aur9jeUynq8L7jQ3pzYS39K0yfyNRm07zQVtq__0wPhc8MqYJSTEoI1AC9dFXmISaRfGVg38gyX68FJQdUz79gvHnhyDFBEDP8EPdU1KLaIoKyNvYLEdVaK4OiZVr6aFsPFWPkgmK29hrE">
+</div>
+<span class="font-bold text-primary mb-1">T-shirt</span>
+<span class="text-on-surface-variant"><br></span>
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group" onclick="selectItem('top', 'Shirt', 18, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Vintage Floral Topper" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHbdpKSkJrHNlzgnqSZ3nx4NlEWejVhXPw3x8m7K9wGfAGlFrf-LB9Y-OeltX-HfdD6bac-aZyfW3jbkcRq014MEQoOzYtph4H6c-SnDYA-UBJLOyE4HnE0fhg-yptR_DPfn67vB00j2bzvNYtSpmJ89K06vuPlvANhho1YvtPT49GsL_o59B0_m8f9TuRQVniPk2Gin-hEKY8kfcOdUayLIXMSPKxBpeNOutM89-gZK3SX7X5JDLa2NyXSJ1vk9f-d5bl0TMxh31nxsg">
+</div>
+<span class="font-bold text-primary mb-1">Shirt</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group hamper-option-selected" onclick="selectItem('top', 'Sweatshirt', 14, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Heart Velvet Topper" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWrYrhBj2o3bXXRFbDxIYu0z0YiTqVGaXJaO-gZOIfWWfwqwv41A1Ouq39fYPBWGNFyTiZs4cGZAyuFqCNCMTqf4a4gOtRdrSqNtE4olUmzsSZpS6ZfIV2pdfqlOqmawxH12CgJmOUKgpa56YHQjzMPNXR-0empJhN-h9GBy3P90H-VRiy-T75tjhjb72LesZ5pJmOooy2oaB7NsjBLZFgSbgKyXZ8D3-ksUuQppZo3gwBa_uzb08xxEG7IbvTr2G6NdCZwsGduz5OBbI">
+</div>
+<span class="font-bold text-primary mb-1">Sweatshirt</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group" onclick="selectItem('top', 'Hoodiee', 16, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Silk Ribbon with Pearl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv5AE64m6k_uoxFfr3jhrpDgesev57uYM0d-LuXf-68lpANhntxTJl66UZ9MmW4Gwa-6k2rzjA_15p3ryKaHmuAKwnGeRppM90KJvggWnbbz4GUlL2O888ybvSk0Ox-2qQofoba3yhCf07nIkbvQMjRPldKqD4Na5ZhsMbcmto-dqmOGqJsbe3cQlf9kPuoeyrN__e4jRZYwCngN07Gqk7bzOWoOxnKowTCIX3l5diNEYVNbB85vgVvyJhcnIHUY2dcmcwJQd7tMyBPPo">
+</div>
+<span class="font-bold text-primary mb-1">Hoodiee</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+</div>
+</section>
+<!-- Step 2: Sweets & Chocolates -->
+<section class="space-y-8" id="category-sweet">
+<div class="relative inline-block section-ribbon">
+<div class="flex items-center gap-4 mb-2">
+<span class="material-symbols-outlined text-primary text-4xl">bakery_dining</span>
+<h2 class="font-headline-md text-headline-md text-primary">Sweets &amp; Chocolates</h2>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6">
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group" onclick="selectItem('sweet', 'Kit kat', 18, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Rose petal truffles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANRwPa9xgH0DdaVIfrJR9hwLcvCHdNVMJg3DWr1vpAUbfXgTK3J92UL3akTEPggGODZpJr234ZNFM1gFj3copq1eRmqISbAVXsqucokGsDehgx7uk-lFB0HkpUlLvyY07TX4xWCYdbyJwfK8FxPruhl71KN05u4FqWfBI9sERL2ggn-2taSFR-A9ylZWzpdkq8Qr93a5JTMFeqXZF8qa9kdPdUS3TzJ64G9-QiDUArcasM2l8ZD4BTbKWAg1ArGZqTkkdhdYbigBYSYpQ">
+</div>
+<span class="font-bold text-primary mb-1">Kit kat</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group" onclick="selectItem('sweet', 'Dairy Milk', 22, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Artisanal bonbons" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkVk2LSWV-HUoS_tHs7R64WugvhYraIWtmcOKSNyzxzs-suXUbtrr-4gk0Xz1m55Yz_U5hPp1Fua0NRS0sLOA8-R4wUWUiBH6_OQ-Sm-SlBVV37MUjaTNcZuviAPCUeGU44LZDqNOPTqu1TUN2n5GHqqXzyzkhvr1B3sd_vEPhF9SinfLQPKlKA2YnRr3XTAj8h0BJzkYCUEiNCDz8HBs2lA13zy-fEq1VuJ-iOr0BBvHRpAbnlwDEoNBgIMZ65UEEul7ZxlwsfU1W3mI">
+</div>
+<span class="font-bold text-primary mb-1">Dairy Milk</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group" onclick="selectItem('sweet', 'Lottie Choco Pie', 20, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Champagne macarons" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIMZfbiTQdzBYKNRGAuGAeOweINNCTJp9YYVMRmb-9MO75saqBeB1gaT5_QUbh5tHo_Yw_n-Bpiild-WAw44rNXX08VG-d4rPZVdAbgJpJEWeBgUyImEDFf0p4-NjvSNzYTgixZy-zSO-8UVfHnZP42GqNt_cnRjgIXtuTCnaVdZWDXn-sBJIbWs_hRG269f_DQxLh-1Rv8Mt3-pUZ5XCIq13diYoro-7YQMf4UpAU4fpJUhu2fu-HR4zW4SrPssa08iv_FFfVgpdjkls">
+</div>
+<span class="font-bold text-primary mb-1">Lottie Choco Pie</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group hamper-option-selected" onclick="selectItem('sweet', 'Ferrero Rocher', 15, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Strawberry Cream Fudge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxq1FaEh0twSoz1C7_5DcLTnlkm9tInT5AqY9vbro5XACbBxMHonqEh117N2l3FPTvhCMTUBVRr5740rE2CjCIc3ipQo4zYsjBqySqWNeDU66UtrS7AwNehgXbo_N5x3QcxVo21Afb51NQHhgkzRLgDsGEvAGQ27Hbw8R4CNemYvAi5IEq_9WZfLZm2uOznnlH6uVk0-TgKHPNoM0yq0n7l26KJnZzHIcWrEKZJKerdXueyIcZ10Nk1edRtzhfkaMT-AercP5zlOWR_Hw">
+</div>
+<span class="font-bold text-primary mb-1">Ferrero Rocher</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group" onclick="selectItem('sweet', 'Munch', 12, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Sprinkle Pretzels" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQZdbn1PzmmTP9LQrom8BhkvzPUMeZnD6K5przgEAozth-gvF6EpVQofXKpMWqVOkVMX-J8TqM5JNa-ojtUaxz9WQqi6F1vv4ggmjmFrsBxRtOpcpnfyXTyo92xhdUca7HwmUb9_1o_udU8Q0aqVcWk0CF_ihQXMp8cPQSQqRicrPvSxa1t1mBH7zz33PHy8vrTsrPZ-UBUCg1HtETdJ9GolkgvKiKB1Zf0dm_Jd25-0Nnayu7VPOBSyOmVA-fN_6lbjjjPl0qiN2RJbA">
+</div>
+<span class="font-bold text-primary mb-1">Munch</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button></div>
+</section>
+<!-- Step 3: Flowers -->
+<section class="space-y-8" id="category-floral">
+<div class="relative inline-block section-ribbon">
+<div class="flex items-center gap-4 mb-2">
+<span class="material-symbols-outlined text-primary text-4xl">local_florist</span>
+<h2 class="font-headline-md text-headline-md text-primary">Beautiful Flowers&nbsp; and&nbsp; others</h2>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6">
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group" onclick="selectItem('floral', 'Baby\'s Breath Cloud', 15, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Baby's breath flowers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtQYAPPmHfcBroyXLG0FRqW7ze6mV90nUxLYCJLYAIQ15cN-9nf9MLSkjuCnehNj5F_gQqxVac-mz1Y5CaeadxCVKr3G8A0_1wv8lnZdqCG44Mb6xvzH_3lm0AZcX4igbwEXTfk6YduK5eTzLbtvFm1MspjpR1p-b3VMm24eIw--6K9tv6xYZCp7lhQQ1hlje3rfC12QgBsyj2e2W7YSB6wOUZuJ2oOaj59jYcnipEOCSej7XYtIs4DlsbQZ9D-pQaePDwc2vJ5vM6">
+</div>
+<span class="font-bold text-primary mb-1">Baby's Breath Cloud</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group hamper-option-selected" onclick="selectItem('floral', 'Crazy Octopus', 25, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Pink peonies" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpze30gFDLehyP09kqJsMzL7KQHCZObLSL-hzFkm4vnjbRKMSqAhRRFF0aDfutAxfbUO9HmIdPQdJ2DdmCCA6FNqOOQlyZHm1jdSQTTfrIduNnfU23zK2uhiRSDeWyPptWG3uzYrIV8CBgiwk1QU_X7hLaaXvr76_YgtnIJLy3JqhdZKeZau5ZUU08x7rv1E7llZsV02p7MaTSTWvcWkA9c5xnOPdG2wqve1ptRNXLOE7xgMl0VFNXHDOaioXAhDMrd6O3cguxFZlw_Eo">
+</div>
+<span class="font-bold text-primary mb-1">Crazy Octopus</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group" onclick="selectItem('floral', 'Soft Toy', 12, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Lavender sprigs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeSKDFHKAJa4qEnK4tkWwcZq9xdS_zjbX0DFUkelOzrNklVXxjBnTeR9GZQ2BKae7QDkRII5gcfOxHqxLcvkYGHQx-pNzgGPgI_mIDeiRRtdtpYZIxC86k58XDREWpcedrVeyAyrkZ6IdP2GM470972gdQoRBfK-c5PoBrNRbB8YraLjTE75oyfBGbNmx36V7cpOcEGrCHGGuQfyZu46VD3UKKDrq-j1Kqoh1um8dwoHEB0SR3VYHaC-5X7rGRpRchxKQx2GcGhkHOnWs">
+</div>
+<span class="font-bold text-primary mb-1">Soft Toy</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group" onclick="selectItem('floral', 'Key Chain', 28, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Pink Ranunculus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAgDA_y92pnTt3mLWVl8ZCT0sbA8_0b3L1TXfL-ERQqrReUafsijZ3C57lv6rfREsId77XsXkEKvEnd-c909tAUquQ2Uni9gdU6pswAw4j-Fy3zClXtl3isMbQvdqTtByDs_oB82oyvv2ScmaNcmGTe9ZE80dYS77KVyAgmaoE5YV3aN5NP8z4Qn-SUaCSNhmquzsReoQSR_w39HB64elP38tKxnwccYfxHKckz0HXS5-kaLqcBT3bW0NZcMk2meT8OEkP3be6isQCJw4">
+</div>
+<span class="font-bold text-primary mb-1">Key Chain</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group" onclick="selectItem('floral', 'Wallet', 18, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="White Baby's Breath" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ0_NrXD2bEbolkQtr6Ts3n0XJ4701Wg-Ud5odmEfx1M3mVxbDpZKL3MBqX2fs1V7zHXmTx_WhR2HiciIfaAaZz0_Uy8_AUcV6V1ARSu4ZVgoKhtXi1EKpDhy82bkZfZTxrVnRnXTg9yamSNPaQnapIv8-8jQ-dLEy0jrMqCZHtr0agEZ-qhGnk4SkQCoUe6U3bcJhVYKn-4qzsU3mxn5ru8zDxyUVWH41ET3UeEaKH3zIzu35jKKeKMN59EdtOORVvmsEV4mi1LDBkcQ">
+</div>
+<span class="font-bold text-primary mb-1">Wallet</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button></div>
+</section>
+<!-- Step 4: Accessories -->
+<section class="space-y-8" id="category-finish">
+<div class="relative inline-block section-ribbon">
+<div class="flex items-center gap-4 mb-2">
+<span class="material-symbols-outlined text-primary text-4xl">featured_seasonal_and_gifts</span>
+<h2 class="font-headline-md text-headline-md text-primary">Accessories &amp; Finishes</h2>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6">
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group" onclick="selectItem('finish', 'Ring', 5, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Satin ribbon bow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMA4CXNXwSERrf-MP6F22VSA4MOgw-Y3WD3i5pmIF87-V1JX-8sEoLjHMJLvKueg-yXync8A7ax_TtX4WPAXTqGS9dTrnLnr6ZiIKXLgP5Yb6-zCNheCswVKQ2dLw_-czFSJWvZCKghtIGEA6M30qO2ibXTchzEM-_Gzx6mM1NOrq2Qt3vXYrtn_hnu2wWBxk0-3HbU2LtE8PlsyuyXWGLWQ5cWosIYqd5KwsmQNznEbWJculrKDUo0Khr5_rqy34C9ZVT9akB9ON8gcg">
+</div>
+<span class="font-bold text-primary mb-1">Ring</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group" onclick="selectItem('finish', 'Locket', 8, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Sparkly charm tag" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-4kuPcnHTM5dNBQCUOxaAU0zTItJaFTcctWDUB7u5KKcvQPmVLmwZqY8vtHehqLQxRxaOQyYAFXiiRIJfvNICvawq7LnGV50kY_wo-j0Wb10EKeLisgqlvimMFfz5bqrcdWu-Go-R23XqDM7F7Nxr1XC-xPS-wcTndupbbOAT_GfrSXYNvbjRLQJcFnUykUFHMckPfy4E3KfTGAPOB4ipFdnvJJzeKcEhz3v6T98FyM0dsatbRpNp3ePcCLBSz9WZF_75DwK52fS7VzM">
+</div>
+<span class="font-bold text-primary mb-1">Locket</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group hamper-option-selected" onclick="selectItem('finish', 'Bangles', 6, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Floral confetti" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6djiF0NvTBP8iShkcNu0S8jONjmNWYO_7n8pl7TKzPJSdXXo2u2vnkh21XgQSTgr-QakKbpN_DnFqVxf0rFT7YjKtcG7HevD-Ipc305BR-ot9g4pgDg2hbPdXf8v8-loOUbqWicp-Ha62PGg2a43URCpQJlUXl2GGZGM9w2YpLL32hW3s165gkKFJKIZOdRKe1ZfpYkkcbQ23Adce2KVQN9Tkuw29oGHR_dnMEZyBV9f5ab8pFZNmddiR8ooixaL4SKpJCIGLr864_BA">
+</div>
+<span class="font-bold text-primary mb-1">Bangles</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group" onclick="selectItem('finish', 'Perfume', 7, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Rose Petal Confetti" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_C6l8lguVgPokgpUQmyDu6BrkYLZb9cW9ir2R6gtfYiUffTq9X-c5dTbRTHQ73CN31XhG8xP09yQr0QwMvhqICtXOcnr9UftiYtPl9uke6JcgFx02Hx0LhYtSX7me_hmc7PFA5wULKHMgPy8K63wrJ72BD1NY73TdsXV4llmtndyYFjWLg9uEs-iw8c_Qteal9cWl-A5azV37kMvcCdTzHDBQRk43qqVA6AHQHKaoHdvlqYjSScY-sc8TmeKDp3xVBs87DoSRtfi2JIk">
+</div>
+<span class="font-bold text-primary mb-1">Perfume</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button>
+<button class="hamper-option-card flex flex-col items-center bg-white p-6 rounded-lg border-2 border-transparent shadow-sm hover:scale-[1.02] transition-all pop-on-click group" onclick="selectItem('finish', 'Neck Piece', 10, this)">
+<div class="w-full aspect-square bg-surface-container rounded-lg mb-6 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Extra Sparkly Charm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNaWzvLxsP4gvY74o_2xy-nKLyNEQTnUMw7dbs_6BTtAtp3lW2X5CodiCQSMISnKlsqBwJwz7FOQwaiSUb-kIoWGjnlP1bYKm1rEIVBJ3oS1nvM7h41wkqqyUaXI2KVLMph15shifEl-8ru4IBVsfsGKt6evTKrKRMh4YAbejUEq4vAL9Yoxd1byB5YxTE9I-4ck7HECoZJhE_Url69l48n2rNtSCFCeOOKHD_AGaK7jOANT3aNYnJQcp31OW4JYXyVHwcd_8yiOsBfvY">
+</div>
+<span class="font-bold text-primary mb-1">Neck Piece</span>
+
+<div class="mt-4 w-full py-2 rounded-full border-2 border-primary text-primary font-label-md transition-all group-[.hamper-option-selected]:bg-primary group-[.hamper-option-selected]:text-white flex items-center justify-center gap-2">
+    <span class="material-symbols-outlined text-sm group-[.hamper-option-selected]:hidden">add</span>
+    <span class="material-symbols-outlined text-sm hidden group-[.hamper-option-selected]:block">check</span>
+    <span class="group-[.hamper-option-selected]:hidden">Add</span>
+    <span class="hidden group-[.hamper-option-selected]:block">Selected</span>
+</div></button></div>
+</section>
+</div>
+<!-- Sticky Sidebar -->
+<aside class="lg:w-80 w-full shrink-0">
+<div class="sticky top-24 glass-card p-8 rounded-lg border border-primary-container shadow-xl">
+<div class="relative mb-6">
+<div class="absolute -top-4 -right-4 w-12 h-12 bg-primary-container/20 rounded-full blur-xl"></div>
+<h3 class="font-headline-md text-headline-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined">shopping_basket</span>
+                        Your Hamper
+                    </h3>
+</div>
+<ul class="space-y-4 mb-8" id="selection-summary">
+                <li class="flex justify-between items-center text-on-surface-variant italic">
+                    <span>Base: Not selected</span>
+                </li>
+                <li class="flex justify-between items-center text-on-surface-variant italic">
+                    <span>Top: Not selected</span>
+                </li>
+                <li class="flex justify-between items-center text-on-surface-variant italic">
+                    <span>Sweet: Not selected</span>
+                    <span></span>
+                </li>
+                <li class="flex justify-between items-center text-on-surface-variant italic">
+                    <span>Beautiful Flowers: Not selected</span>
+                    <span></span>
+                </li>
+                <li class="flex justify-between items-center text-on-surface-variant italic">
+                    <span>Accessories & Finishes: Not selected</span>
+                    <span></span>
+                </li>
+            </ul>
+<div class="border-t border-primary-container pt-6 mb-8">
+<div class="flex justify-between items-center mb-2">
+<span class="text-on-surface-variant font-label-md">Total</span>
+<span id="total-price" class="font-bold text-primary">0.00</span>
+</div>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest text-center">Hand-wrapped with pookie magic ✨</p>
+</div>
+<a id="whatsapp-order-link" href="https://wa.me/918779542727?text=Hi%20Pookie%20Hampers%21%20I%27d%20like%20to%20order%20a%20custom%20hamper.%20Base%3A%20Pastel%20Blue%20Hat%20Box%2C%20Top%3A%20Heart%20Velvet%20Topper%2C%20Sweet%3A%20Strawberry%20Cream%20Fudge%2C%20Floral%3A%20Mini%20Peony%20Posy%2C%20Finish%3A%20Dried%20Flower%20Petal%20Confetti.%20Can%20you%20help%20me%3F" target="_blank" rel="noopener noreferrer" class="w-full py-4 rounded-full bg-primary text-white font-bold hover:scale-105 transition-transform flex items-center justify-center gap-2 shadow-lg shadow-primary/30"><span class="material-symbols-outlined text-xl">chat</span> Order via WhatsApp</a>
+<div class="mt-6 flex flex-col gap-2">
+<p class="text-xs text-on-surface-variant text-center opacity-70">Pick one from each section to complete your dream hamper.</p>
+</div>
+</div>
+</aside>
+</div>
+</section>
+<!-- Inspiration Section -->
+<section class="bg-surface-container py-section-gap-desktop">
+<div class="max-w-7xl mx-auto px-container-padding">
+<div class="text-center mb-16">
+<h2 class="font-display-lg text-headline-lg text-primary mb-4">Ready-to-Ship Guides</h2>
+<p class="text-on-surface-variant">Running out of time? Our pookies have curated these perfect bundles just for you.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Guide 1 -->
+<div class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+<div class="h-80 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="The Bestie Hamper" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiUYdSfqs8kXmFLv_8GwNRv1RY8pliM9pByWCA6FSltiNgFukWeRgqZQT_CYFQeILrgRKQ826a7E0mBAo_4k_Hlgy7Pgp30ScqtMHh_m6IcPIB2EVSxGIy_cUD3HLod4WAOZ88YcLf349_9yi9Z4dBYeYYe96IW17F9kP62pYQ034QGAJ6IOPRxgyCGdPAUe8CeYIfIvHf-tLpD5KBrDNCuQFu0mksPiel2V4wHXN4ISzUUughtUbz67-HTIOTmNcz5I--SNu9BtqXS9M">
+<div class="absolute top-4 left-4 bg-primary text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Popular</div>
+</div>
+<div class="p-8 text-center">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">The Bestie</h4>
+<p class="text-on-surface-variant mb-6">A celebration of friendship with sweets and sparkle.</p>
+<a href="https://wa.me/918779542727?text=Hi%20Pookie%20Hampers%21%20I%27m%20interested%20in%20%27The%20Bestie%27%20Hamper%20Bundle.%20It%20includes%20sweets%20and%20sparkles%20for%20my%20best%20friend.%20Can%20you%20help%20me%20order%3F" target="_blank" rel="noopener noreferrer" class="font-label-md text-primary flex items-center justify-center gap-1 mx-auto hover:gap-2 transition-all">Shop via WhatsApp <span class="material-symbols-outlined">arrow_forward</span></a>
+</div>
+</div>
+<!-- Guide 2 -->
+<div class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+<div class="h-80 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="The Romantic Hamper" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6Eo6ipffQM5Bue0DwU8SSIdyogLR1DxMW1kn8VhMNdEQVlJ40vYVBuO5gMQ8svDXVPVYvJf2ipt4LHMMg4GYVYx3QVnPsHgnodesbH5Vu-Bwn-PoJy19aw28r8oA8tjNv68Hinai_EJNAE19NrCmv1rIEOX-yrYYiuMYg87YduNw-7X2t6GSEdpTWzTcCFPd0uVGfKwUQzvu_aHeoF31AzJWFZyWLPuCgLCSOfL6tNFaeEOpMbfHTY9Q0FZq27KAoROPCf6M4HklVZKU">
+</div>
+<div class="p-8 text-center">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">The Romantic</h4>
+<p class="text-on-surface-variant mb-6">Designed to make hearts flutter with timeless elegance.</p>
+<a href="https://wa.me/918779542727?text=Hi%20Pookie%20Hampers%21%20I%27m%20interested%20in%20%27The%20Romantic%27%20Hamper%20Bundle.%20It%20sounds%20perfect%20for%20a%20special%20occasion.%20Can%20you%20tell%20me%20more%3F" target="_blank" rel="noopener noreferrer" class="font-label-md text-primary flex items-center justify-center gap-1 mx-auto hover:gap-2 transition-all">Shop via WhatsApp <span class="material-symbols-outlined">arrow_forward</span></a>
+</div>
+</div>
+<!-- Guide 3 -->
+<div class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+<div class="h-80 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="The Self-Care Queen Hamper" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUYHYPJbqSD9SEwgGjUUsoklv-KdscO0pb__qk9n6rEbSkl38nkY48JC_MUxC1T1Jbkr7Wol1ZIoFO2I8L6P11oTcPcksq8yLJSoLWCGeH1YmWF0qek00qj7v2DwUQQmz1TmrZuQNY_XC5g7qA_noASEfMPbK0Bjq9qfmooLHA2oUktlu1yp8lgKW2q5W75OsXGVwXRo-bwzh6QwSaiLHN6Hw9tGs0gxA_fprs0UeBUt23uVvgZPca3rkyl938pBPfYeyyBsUiSNFQx0c">
+<div class="absolute top-4 left-4 bg-secondary text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">New</div>
+</div>
+<div class="p-8 text-center">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">The Self-Care Queen</h4>
+<p class="text-on-surface-variant mb-6">A blissful retreat in a box for ultimate relaxation.</p>
+<a href="https://wa.me/918779542727?text=Hi%20Pookie%20Hampers%21%20I%27m%20interested%20in%20%27The%20Self-Care%20Queen%27%20Hamper%20Bundle.%20Perfect%20for%20some%20pampering.%20Can%20you%20help%20me%20order%3F" target="_blank" rel="noopener noreferrer" class="font-label-md text-primary flex items-center justify-center gap-1 mx-auto hover:gap-2 transition-all">Shop via WhatsApp <span class="material-symbols-outlined">arrow_forward</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-dim w-full rounded-t-lg">
+<div class="flex flex-col md:flex-row justify-between items-center px-container-padding py-section-gap-mobile md:py-16 max-w-7xl mx-auto gap-8">
+<div class="flex flex-col gap-4 text-center md:text-left">
+<a class="font-display-lg text-headline-md text-primary dark:text-primary-fixed-dim" href="index.html">Pookie Hampers</a>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">© 2024 Pookie Hampers. Made with love and ribbons.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary hover:translate-x-1 transition-all duration-200" href="about.html">About Us</a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary hover:translate-x-1 transition-all duration-200" href="index.html#shipping">Shipping</a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary hover:translate-x-1 transition-all duration-200" href="index.html#returns">Returns</a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary hover:translate-x-1 transition-all duration-200" href="policy.html">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary hover:translate-x-1 transition-all duration-200" href="index.html#contact">Contact</a>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full border border-primary-container flex items-center justify-center text-primary hover:bg-primary-container cursor-pointer transition-all">
+<span class="material-symbols-outlined text-sm">share</span>
+</div>
+<div class="w-10 h-10 rounded-full border border-primary-container flex items-center justify-center text-primary hover:bg-primary-container cursor-pointer transition-all">
+<span class="material-symbols-outlined text-sm">alternate_email</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        const selections = {
+            base: { name: 'Not selected', price: 0 },
+            top: { name: 'Not selected', price: 0 },
+            sweet: { name: 'Not selected', price: 0 },
+            floral: { name: 'Not selected', price: 0 },
+            finish: { name: 'Not selected', price: 0 }
+        };
+
+        function selectItem(category, name, price, element) {
+            selections[category] = { name, price };
+            
+            // Visual feedback for selection within the specific category section
+            const section = element.closest('section');
+            const cards = section.querySelectorAll('.hamper-option-card');
+            cards.forEach(card => card.classList.remove('hamper-option-selected'));
+            element.classList.add('hamper-option-selected');
+
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const list = document.getElementById('selection-summary');
+            list.innerHTML = `
+                <li class="flex items-center ${selections.base.price > 0 ? 'text-primary font-bold' : 'text-on-surface-variant italic'}">
+                    <span>Base: ${selections.base.name}</span>
+                </li>
+                <li class="flex items-center ${selections.top.price > 0 ? 'text-primary font-bold' : 'text-on-surface-variant italic'}">
+                    <span>Top: ${selections.top.name}</span>
+                </li>
+                <li class="flex items-center ${selections.sweet.price > 0 ? 'text-primary font-bold' : 'text-on-surface-variant italic'}">
+                    <span>Sweet: ${selections.sweet.name}</span>
+                </li>
+                <li class="flex items-center ${selections.floral.price > 0 ? 'text-primary font-bold' : 'text-on-surface-variant italic'}">
+                    <span>Beautiful Flowers: ${selections.floral.name}</span>
+                </li>
+                <li class="flex items-center ${selections.finish.price > 0 ? 'text-primary font-bold' : 'text-on-surface-variant italic'}">
+                    <span>Accessories & Finishes: ${selections.finish.name}</span>
+                </li>
+            `;
+
+            const total = Object.values(selections).reduce((acc, curr) => acc + curr.price, 0);
+            document.getElementById('total-price').innerText = total.toFixed(2);
+            updateOrderLink();
+        }
+
+        function getOrderUrl() {
+            const message = `Hi Pookie Hampers! I\'d like to order a custom hamper. Base: ${selections.base.name}, Top: ${selections.top.name}, Sweet: ${selections.sweet.name}, Floral: ${selections.floral.name}, Finish: ${selections.finish.name}. Can you help me?`;
+            return `https://wa.me/918779542727?text=${encodeURIComponent(message)}`;
+        }
+
+        function updateOrderLink() {
+            const link = document.getElementById('whatsapp-order-link');
+            if (link) {
+                link.href = getOrderUrl();
+            }
+        }
+
+        function addToBag() {
+            const missing = [];
+            if (selections.base.price === 0) missing.push("a base");
+            if (selections.top.price === 0) missing.push("a top");
+            if (selections.sweet.price === 0) missing.push("some sweets");
+            if (selections.floral.price === 0) missing.push("flowers");
+            if (selections.finish.price === 0) missing.push("a finishing touch");
+
+            if (missing.length > 0) {
+                alert(`Almost there! You still need to pick: ${missing.join(", ")} ✨`);
+                return;
+            }
+            
+            alert("Added to bag! Your pookie will love this ✨");
+        }
+
+        updateSummary();
+    </script>
+
+
+
+
+
+
+
+
+
+
+</body></html>
