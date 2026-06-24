@@ -1,0 +1,16 @@
+{
+  "name": "pookie-hampers",
+  "version": "1.0.0",
+  "description": "The cutest gifts for your favorite pookies - Hamper customizer & e-commerce",
+  "author": "Tanvi",
+  "license": "MIT",
+  "private": true,
+  "keywords": [
+    "hampers",
+    "gifts",
+    "e-commerce",
+    "tailwind",
+    "coquette",
+    "customizer"
+  ]
+}
